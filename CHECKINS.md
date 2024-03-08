@@ -1,11 +1,57 @@
-*Check-in 2*
+### Group 16 Project 2 Check-in 2A
 
-Static analysis of code to measure level of coupling between classes in Java. Would assign a coupling score between each class and display results as a matrix showing relation of all classes to all other classes. Users would be developers learning about coupling in object oriented programs and developers being introduced to new code bases to get an overview of how classes interact. 
+*Brief description of your planned program analysis (and visualization, if applicable) ideas.*
 
-Too early for breakdown of responsibities when we're not super comfortable with what exactly the main responsibilites will be.
+Static analysis of code to measure level of coupling between classes in Java. Would assign a coupling score between each class and display results as a matrix showing relation of all classes to all other classes. Users would be developers learning about coupling in object oriented programs and developers being introduced to new code bases to get an overview of how classes interact.
 
-This week the plan is to do more program analysis review so that we can clearly define the roadmap next week and do a proper breakdown of responsibilites. 
+*Notes of any important changes/feedback from TA discussion.*
 
+Our TA provided useful feedback which included reducing the scope of our original implementation and having us decide on which of the 3 requirements to implement. We were also encouraged to think of a more specific use case and user for our program analysis. 
+
+*Any planned follow-up tasks or features still to design*
+
+We plan to do more program analysis review so that we can clearly define the roadmap next week and do a proper breakdown of responsibilities.
+
+*Planned division of main responsibilities between team members*
+
+Here is our rough breakdown of tasks. We will have more clarity on exacts tasks as the weeks progress.
+
+1. Visualization Component (if required) (Sophia, Will)
+- Endpoint/Data handoff
+- Data model
+- View model
+
+2. Java Program Analysis (Jeffrey, Taylor, Dave)
+- Static Analysis
+- Dynamic Analysis
+
+*Summary of progress so far.*
+
+Decided that Java will be the language we will analyze. We made a rough outline of tasks for the upcoming weeks. We have also split up modules of the program.
+
+*Roadmap / Timeline*
+
+Mar 15th
+- Review the libraries for Java AST
+- Brainstorm potential data points to collect
+- Complete draft of user study
+
+Mar 22nd
+- Finalize data points to collect
+
+Mar 29th
+- Final user study plan
+- Bug fixes
+- User study improvements to codebase
+
+April 5th
+- Have the initial version of end-to-end product done
+- Film/Edit video
+
+Project 2 Deadline (April 8th 2024)
+- Completed Video
+
+### Group 16 Project 2 Check-in 1
 
 *Brief description of your discussions within your team so far, and any current candidate ideas for your project. You should talk with your TA/Alex/Caroline as soon as possible about these ideas; due to the project starting mid-week it's OK if you have not yet done this, but make sure to note the progress you have made so far. Any planned follow-up tasks for the next week.*
 
