@@ -2,7 +2,7 @@
 
 *Brief description of your planned program analysis (and visualization, if applicable) ideas.*
 
-Static analysis of code to measure level of coupling between classes in Java. Would assign a coupling score between each class and display results as a matrix showing relation of all classes to all other classes. Users would be developers learning about coupling in object oriented programs and developers being introduced to new code bases to get an overview of how classes interact.
+Static analysis of code to measure level of coupling between classes in Java. Would assign a coupling score between each class and display results as a matrix showing relation of all classes to all other classes. Users would be developers learning about coupling in object oriented programs and developers being introduced to new code bases to get an overview of how classes interact. The visualization of our results would come in the form of a graph, table or something similar.
 
 *Notes of any important changes/feedback from TA discussion.*
 
