@@ -1,3 +1,43 @@
+### Group 16 Project 2 Check-in 3
+
+*Updates for Check-in 3*
+
+Due to the feedback received from our TA, we had to change our project idea. Our idea now is to build a program analysis tool that will measure the runtime of every function call as the program runs, and it will also display the flow of the program from beginning to end. We plan to use dynamic analysis and have a visualization component (likely a flame graph) to display our work to the user.
+
+Our target users for this project are those who are interested in determining areas of the code where its runtime can be improved, and pick up on parts of the code that are not reachable. This is ideal for users looking to refactor parts of their project, and it should be suitable for projects at all levels of complexity (i.e. student project, professional legacy code).
+
+We are still on track with our timeline, though we may be slightly behind due to the sudden change of our plans. We have to look into new frameworks/libraries that work with our new idea for Project 2, so the preparation to begin implementing the project may be delayed.
+
+_User Study 1_
+
+We completed the user study by presenting the following two flame diagram mockups to the participant and asking him to provide us with feedback about both the use case and interpretability of the visualizations.
+
+<img width="1000" alt="UserStudy1" src="Project2Checkin3_img.png">
+
+We received the following feedback and discussed the respective solutions for each:
+
+Feedback: Tree structure might make more sense
+Solution: Keeping the block structure for better responsiveness
+
+Feedback: If multiple calls of the same function, then make separate blocks
+Solution: This will be included in our implementation
+
+Feedback: What is the order when the function calls multiple things?
+Solution: The order will be implemented from left to right.
+
+Feedback: How does the graph handle recursion?
+Solution: We will consider have the same function stacked on top of itself.
+
+Feedback: How realistic is it or interpretable if it becomes too complex for codebases in industry? Maybe good for teaching
+Solution: The use case will have to be reduced to either a small portion of the code base or for education purposes.
+
+Feedback: Do the different colours symbolize anything?
+Solution: We can consider correlating the colours to the length of time it takes to run.
+
+Feedback: What does the size of the bars mean?
+Solution: We can make the size of the bars correlate to the length of time it takes to run.
+
+
 ### Group 16 Project 2 Check-in 2A
 
 *Brief description of your planned program analysis (and visualization, if applicable) ideas.*
