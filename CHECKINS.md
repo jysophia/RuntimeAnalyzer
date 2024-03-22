@@ -1,3 +1,26 @@
+### Group 16 Project 2 Check-in 4
+Status of implementation so far:
+* From our last check in, we received feedback that our initial project idea was too simple. We are planning to change our project scope to be a Java profiler that allows the user to see the runtime of the execution path, and identify any hotpots in the code as well as areas that are not as frequently caught in the code. This would allow the user to see which part of their code runs efficiently, and which parts of the code vary in runtime whenever the program is executed. Currently, we are doing research and tutorials to learn and understand Java Instrumentation vs. Java Parser. We are leaning towards using Java Parser as that allows us to dig into the AST, whereas Java Instrumentation may require us to go into the byte code. We are continuing our research to compare Java Parser against other tools that could be useful for our project.
+Hopefully, by our TA meeting next week, we’ll be comfortable enough with the Java Implementation API to ask any clarifying questions needed.
+
+Plans for final user study:
+* A potential idea for the final user study was to recruit someone familiar with programming, and get them to run a program using our analysis tool. This could be a program that is basic enough that we can briefly explain what it does. We would collect feedback based on their response to the functionality and visualization of our analysis tool.
+
+Planned timeline for the remaining days. (Adapted from Check-In 2):\
+* Mar 29th:\
+Basic implementation of modules done (basic usage of Java Instrumentation, Visualization module)\
+Final user study plan\
+User study improvements to codebase
+
+* April 5th:\
+Have the initial version of end-to-end product done\
+Film/upload video
+
+Progress against the timeline planned for your team, including the specific goals you defined (originally as part of Check-in 2) for Check-in 4; any revisions to Check-in 5 goals.
+
+* Originally, our goal for this week was to finalize the data points that we needed to collect. However, since our project scope has changed, this is no longer relevant. Revisions to check-in 5 goals are made above under Mar. 29.
+
+
 ### Group 16 Project 2 Check-in 3
 
 *Updates for Check-in 3*
