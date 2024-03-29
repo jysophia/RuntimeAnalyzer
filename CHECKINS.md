@@ -1,3 +1,24 @@
+### Group 16 Project 2 Check-in 5
+*Status of final user study*
+We now have an idea of who our final user study will be given to (someone familiar with programming) along with an updated list of questions once our implementation is completed.
+
+*Plans for final video*
+As discussed by the TA, the video should go over a set of google slides describing the motivation, use case, and limitations of our program.
+
+Planned timeline for the remaining days. (Adapted from Check in 4)
+* Mar 29th:\
+Basic implementation of modules done (basic usage of Java Instrumentation, Visualization module)\
+Final user study plan\
+User study improvements to codebase
+
+* April 5th:\
+Have the initial version of end-to-end product done\
+Film/upload video
+
+*Progress against the timeline planned for your team, including the specific goals you defined (originally as part of Check-in 2) for Check-in 5.*
+
+* We are currently behind schedule, but now we are waiting on some direction from the TA go ahead with one of two directions for the implementation of the project. (1) Online dynamic analysis vs (2) Offline dynamic analysis. We have also shifted some group members into roles to accomodate the potential split in workload from the change in project structure.
+
 ### Group 16 Project 2 Check-in 4
 Status of implementation so far:
 * From our last check in, we received feedback that our initial project idea was too simple. We are planning to change our project scope to be a Java profiler that allows the user to see the runtime of the execution path, and identify any hotpots in the code as well as areas that are not as frequently caught in the code. This would allow the user to see which part of their code runs efficiently, and which parts of the code vary in runtime whenever the program is executed. Currently, we are doing research and tutorials to learn and understand Java Instrumentation vs. Java Parser. We are leaning towards using Java Parser as that allows us to dig into the AST, whereas Java Instrumentation may require us to go into the byte code. We are continuing our research to compare Java Parser against other tools that could be useful for our project.
