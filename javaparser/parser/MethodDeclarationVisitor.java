@@ -1,5 +1,3 @@
-package com.yourorganization.maven_sample;
-
 import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.stmt.Statement;
