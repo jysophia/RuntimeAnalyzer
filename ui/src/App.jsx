@@ -1,33 +1,47 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import FileInput from "./components/FileInput.jsx";
+import AnalysisContainer from "./components/AnalysisContainer.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [showAnalysis, setShowAnalysis] = useState(false)
+    const [data, setData] = useState([
+        [{
+            "key": 0,
+            "name": "main",
+            "start": 0,
+            "end": 4000
+        }],
+        [{
+            "key": 1,
+            "name": "testFunc",
+            "start": 100,
+            "end": 3900
+        }],
+        [{
+            "key": 2,
+            "name": "func1",
+            "start": 400,
+            "end": 1000
+        },
+        {
+            "key": 3,
+            "name": "func2",
+            "start": 1100,
+            "end": 1900
+        }]
+    ])
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+        <FileInput setShowAnalysis={setShowAnalysis}/>
+        <div>
+            {showAnalysis &&
+                <div className="analysis-wrapper">
+                    <AnalysisContainer data={data}/>
+                </div>
+            }
+        </div>
     </>
   )
 }
