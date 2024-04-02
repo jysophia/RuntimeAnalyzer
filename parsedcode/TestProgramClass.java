@@ -12,8 +12,8 @@ public class TestProgramClass {
 
     public int getVal() {
         int objectId = this.hashCode();
-        String methodName = ("getVal");
         String type = this.getClass().getName();
+        String methodName = ("getVal");
         long callNanos = System.nanoTime();
         CallTelemetry callTelemetry = new CallTelemetry(objectId, methodName, type, callNanos);
         TelemetryLogger.logCall(callTelemetry);
@@ -26,8 +26,8 @@ public class TestProgramClass {
 
     public void setVal(int val) {
         int objectId = this.hashCode();
-        String methodName = ("setVal");
         String type = this.getClass().getName();
+        String methodName = ("setVal");
         long callNanos = System.nanoTime();
         CallTelemetry callTelemetry = new CallTelemetry(objectId, methodName, type, callNanos);
         TelemetryLogger.logCall(callTelemetry);
@@ -40,14 +40,22 @@ public class TestProgramClass {
 
     public int returnTest() {
         int objectId = this.hashCode();
-        String methodName = ("returnTest");
         String type = this.getClass().getName();
+        String methodName = ("returnTest");
         long callNanos = System.nanoTime();
         CallTelemetry callTelemetry = new CallTelemetry(objectId, methodName, type, callNanos);
         TelemetryLogger.logCall(callTelemetry);
         if (val > 0) {
+            long returnNanos = System.nanoTime();
+            long duration = returnNanos - callNanos;
+            ReturnTelemetry returnTelemetry = new ReturnTelemetry(objectId, methodName, type, returnNanos, duration);
+            TelemetryLogger.logReturn(returnTelemetry);
             return 5;
         } else {
+            long returnNanos = System.nanoTime();
+            long duration = returnNanos - callNanos;
+            ReturnTelemetry returnTelemetry = new ReturnTelemetry(objectId, methodName, type, returnNanos, duration);
+            TelemetryLogger.logReturn(returnTelemetry);
             return 10;
         }
     }

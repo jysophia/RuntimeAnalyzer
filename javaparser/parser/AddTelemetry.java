@@ -8,9 +8,6 @@ import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.util.List;
 
-/**
- * Some code that uses JavaParser.
- */
 public class AddTelemetry {
     public static void main(String[] args) {
         // JavaParser has a minimal logging class that normally logs nothing.
@@ -42,13 +39,5 @@ public class AddTelemetry {
         // This saves all the files we just read to an output directory.
         Path parsedCodePath = FileSystems.getDefault().getPath("../../parsedcode");
         sourceRoot.saveAll(parsedCodePath);
-        /*
-        sourceRoot.saveAll(
-                // The path of the Maven module/project which contains the LogicPositivizer class.
-                CodeGenerationUtils.mavenModuleRoot(Printerize.class)
-                        // appended with a path to "output"
-                        .resolve(Paths.get("output")));
-
-         */
     }
 }
