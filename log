@@ -1,0 +1,1 @@
+{"calls":[{"methodName":"getVal","type":"TestProgramClass","objectId":804564176,"callNanos":28151335436091},{"methodName":"setVal","type":"TestProgramClass","objectId":804564176,"callNanos":28151346806738},{"methodName":"getVal","type":"TestProgramClass","objectId":804564176,"callNanos":28151346810435}],"returns":[]}

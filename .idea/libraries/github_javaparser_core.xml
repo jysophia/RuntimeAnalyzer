@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="github.javaparser.core" type="repository">
+    <properties maven-id="com.github.javaparser:javaparser-core:3.25.9" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/javaparser/lib/javaparser-core-3.25.9.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

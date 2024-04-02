@@ -1,20 +1,17 @@
 import com.github.javaparser.ParseResult;
 import com.github.javaparser.ast.CompilationUnit;
-import com.github.javaparser.utils.CodeGenerationUtils;
 import com.github.javaparser.utils.Log;
 import com.github.javaparser.utils.SourceRoot;
 
 import java.io.IOException;
-import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 /**
  * Some code that uses JavaParser.
  */
-public class Printerize {
+public class AddTelemetry {
     public static void main(String[] args) {
         // JavaParser has a minimal logging class that normally logs nothing.
         // Let's ask it to write to standard out:
@@ -33,7 +30,9 @@ public class Printerize {
                 if (result.isSuccessful()) {
                     CompilationUnit cu = result.getResult().get();
                     mdv.visit(cu, null);
-                    cu.addImport("PrinterTools.SimplePrinter");
+                    cu.addImport("TelemetryTools.CallTelemetry");
+                    cu.addImport("TelemetryTools.ReturnTelemetry");
+                    cu.addImport("TelemetryTools.TelemetryLogger");
                 }
             }
         } catch (IOException e) {
