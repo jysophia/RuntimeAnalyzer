@@ -40,12 +40,12 @@ public class TelemetryLogger {
     log.put("calls", callsJson);
     log.put("returns", returnsJson);
 
-    Path logPath = FileSystems.getDefault().getPath("./log/log.json");
     try {
-      Files.writeString(logPath, log.toJSONString());
+      File logFile = new File("./log/log.json");
+      FileWriter logWriter = new FileWriter(logFile);
+      logWriter.write(log.toJSONString());
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
-
   }
 }

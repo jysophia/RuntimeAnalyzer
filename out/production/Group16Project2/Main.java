@@ -1,3 +1,5 @@
+import TestProgramPackage.AnotherTestClass;
+
 public class Main {
   public static void main(String[] args) {
     TestProgramClass tc = new TestProgramClass(0);

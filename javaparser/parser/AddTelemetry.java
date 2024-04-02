@@ -37,7 +37,7 @@ public class AddTelemetry {
         }
 
         // This saves all the files we just read to an output directory.
-        Path parsedCodePath = FileSystems.getDefault().getPath("../../parsedcode");
+        Path parsedCodePath = FileSystems.getDefault().getPath("../parsedcode");
         sourceRoot.saveAll(parsedCodePath);
     }
 }
