@@ -35,7 +35,7 @@ public class TestProgramClass {
         long returnNanos = System.nanoTime();
         long duration = returnNanos - callNanos;
         ReturnTelemetry returnTelemetry = new ReturnTelemetry(objectId, methodName, type, returnNanos, duration);
-        TelemetryLogger.logReturn(returnTelemetry);
+        // TelemetryLogger.logReturn(returnTelemetry);
     }
 
     public int returnTest() {

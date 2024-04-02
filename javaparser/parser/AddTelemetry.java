@@ -17,7 +17,7 @@ public class AddTelemetry {
         // SourceRoot is a tool that read and writes Java files from packages on a certain root directory.
         // In this case the root directory is found by taking the root from the current Maven module,
         // with src/main/resources appended.
-        Path rootPath = FileSystems.getDefault().getPath("../resources");
+        Path rootPath = FileSystems.getDefault().getPath("./resources");
         SourceRoot sourceRoot = new SourceRoot(rootPath);
         MethodDeclarationVisitor mdv = new MethodDeclarationVisitor();
 
