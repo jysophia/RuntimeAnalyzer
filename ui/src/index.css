@@ -5,7 +5,7 @@
 .file-input {
     display: flex;
     flex-direction: column;
-    height: 1000px;
+    height: 500px;
 }
 
 .textarea {
@@ -23,4 +23,19 @@
     position: absolute;
     top: 380px;
     right: 250px;
+}
+
+.fn-btn {
+    padding-top: 10px;
+}
+
+.analysis-container {
+    display: flex;
+}
+
+.analysis-wrapper {
+    display: flex;
+    justify-content: center;
+    border: solid;
+    border-radius: 10px;
 }
