@@ -6,19 +6,19 @@ import AnalysisContainer from "./components/AnalysisContainer.jsx";
 function App() {
     const [showAnalysis, setShowAnalysis] = useState(false)
     const [data, setData] = useState([
-        {
+        [{
             "key": 0,
             "name": "main",
             "start": 0,
             "end": 4000
-        },
-        {
+        }],
+        [{
             "key": 1,
             "name": "testFunc",
             "start": 100,
             "end": 3900
-        },
-        {
+        }],
+        [{
             "key": 2,
             "name": "func1",
             "start": 400,
@@ -29,7 +29,7 @@ function App() {
             "name": "func2",
             "start": 1100,
             "end": 1900
-        }
+        }]
     ])
 
   return (
