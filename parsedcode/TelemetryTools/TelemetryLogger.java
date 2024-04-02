@@ -44,6 +44,7 @@ public class TelemetryLogger {
       File logFile = new File("./log/log.json");
       FileWriter logWriter = new FileWriter(logFile);
       logWriter.write(log.toJSONString());
+      logWriter.close();
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
