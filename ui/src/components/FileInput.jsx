@@ -10,8 +10,12 @@ const FileInput = ({setShowAnalysis}) => {
 
     return (
         <div className="file-input">
+          <div className="text-btn-container">
             <textarea className="textarea textarea-lg textarea-primary" placeholder="Insert your code here"></textarea>
-            <button className="btn btn-active btn-primary btn-setting" onClick={analyzeCode}>Analyze</button>
+            <div className="btn-container">
+              <button className="btn btn-active btn-primary btn-setting" onClick={analyzeCode}>Analyze</button>
+            </div>
+          </div>
         </div>
     )
 }

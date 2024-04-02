@@ -34,8 +34,9 @@ function App() {
 
   return (
     <>
+        <h1 className="title">Analyzer</h1>
         <FileInput setShowAnalysis={setShowAnalysis}/>
-        <div>
+        <div className="analysis-outer-container">
             {showAnalysis &&
                 <div className="analysis-wrapper">
                     <AnalysisContainer data={data}/>

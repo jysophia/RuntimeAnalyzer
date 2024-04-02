@@ -7,7 +7,7 @@ const AnalysisContainer = ({data}) => {
     if (index < data.length - 1) {
       return data[index + 1]
     } else {
-      return [{"name": "No functions"}]
+      return [{"name": "No functions", "start": 0, "end": 0}]
     }
   }
 

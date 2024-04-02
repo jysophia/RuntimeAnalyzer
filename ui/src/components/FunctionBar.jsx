@@ -26,7 +26,7 @@ const FunctionBar = ({name, start, end, next}) => {
       <div className="fn-btn" style={{
         paddingLeft: `calc(${start/4}px)`
       }}>
-        <button className="btn btn-secondary"
+        <button className="btn btn-accent"
                 onClick={() => showModal()}
                 style={{
                   width: `calc(${(end - start)/4}px)`
@@ -37,12 +37,14 @@ const FunctionBar = ({name, start, end, next}) => {
       <dialog id={name} className="modal">
         <div className="modal-box">
           <h3 className="font-bold text-lg">{"Function: " + name + " (" + time + "ms)"}</h3>
+          <hr width="100%" style={{color: 'black', height: '10px'}} />
           <p className="font-bold py-4">Calls:</p>
           {
             next.map(f =>
-              <p className="py-4">{f.name + ": " + getDuration(f) + "ms"}</p>
+              <p className="py-4">{f.name + "(): " + getDuration(f) + "ms"}</p>
             )
           }
+          <hr width="100%" color="black" size="50px" />
           <p className="font-bold py-4">{"Non call time: " + getNonCallTime()}</p>
         </div>
         <form method="dialog" className="modal-backdrop">
