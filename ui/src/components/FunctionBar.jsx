@@ -1,11 +1,13 @@
 import 'react'
+import {useEffect, useState} from "react";
 
-const FunctionBar = ({name, start, end, next}) => {
+const FunctionBar = ({id, name, start, end, pad, next}) => {
 
   const time = end - start;
+  const [subCalls, setSubCalls] = useState(next.filter((n) => n.start >= start && n.end <= end));
 
   function showModal() {
-    document.getElementById(name).showModal()
+    document.getElementById(id).showModal()
   }
 
   function getDuration(f) {
@@ -14,7 +16,7 @@ const FunctionBar = ({name, start, end, next}) => {
 
   function getNonCallTime() {
     let callTime = 0;
-    next.forEach(f => {
+    subCalls.forEach(f => {
       callTime += f.end - f.start;
     })
 
@@ -24,7 +26,7 @@ const FunctionBar = ({name, start, end, next}) => {
   return (
     <>
       <div className="fn-btn" style={{
-        paddingLeft: `calc(${start/4}px)`
+        paddingLeft: `calc(${pad/4}px)`
       }}>
         <button className="btn btn-accent"
                 onClick={() => showModal()}
@@ -34,13 +36,13 @@ const FunctionBar = ({name, start, end, next}) => {
           {name + " (" + time + "ms)"}
         </button>
       </div>
-      <dialog id={name} className="modal">
+      <dialog id={id} className="modal">
         <div className="modal-box">
           <h3 className="font-bold text-lg">{"Function: " + name + " (" + time + "ms)"}</h3>
           <hr width="100%" style={{color: 'black', height: '10px'}} />
           <p className="font-bold py-4">Calls:</p>
           {
-            next.map(f =>
+            subCalls.map(f =>
               <p className="py-4">{f.name + "(): " + getDuration(f) + "ms"}</p>
             )
           }

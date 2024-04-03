@@ -12,6 +12,7 @@
     justify-content: center;
     align-items: center;
     height: 500px;
+    background-color: #6195ad;
 }
 
 .textarea {
@@ -30,8 +31,16 @@
     padding-top: 10px;
 }
 
-.analysis-container {
+.fn-btn:last-child {
+    padding-bottom: 10px;
+}
+
+.bar-container {
     display: flex;
+}
+
+.bar-wrapper {
+    padding-bottom: 10px;
 }
 
 .analysis-wrapper {
