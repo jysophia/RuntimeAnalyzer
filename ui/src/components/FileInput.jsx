@@ -1,11 +1,25 @@
 import 'react'
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import AnalysisContainer from "./AnalysisContainer.jsx";
+import test from "./testLog.json";
+
+function fetchData() {
+    fetch('../../../parsedcode/log/log.json', {
+        method: 'GET'
+    })
+        .then(response => response.text())
+        .then(data => {
+            let result = JSON.parse(data);
+            console.log(result);
+        })
+        .catch(err => console.log('Error found: ' + err));
+}
 
 const FileInput = ({setShowAnalysis}) => {
 
     const analyzeCode = () => {
         setShowAnalysis(true);
+        fetchData();
     }
 
     return (
