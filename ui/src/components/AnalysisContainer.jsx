@@ -3,7 +3,7 @@ import FunctionBar from "./FunctionBar.jsx";
 
 const AnalysisContainer = ({data}) => {
 
-  function getWork(index) {
+  function getNext(index) {
     if (index < data.length - 1) {
       return data[index + 1]
     } else {
@@ -11,20 +11,28 @@ const AnalysisContainer = ({data}) => {
     }
   }
 
+  function getPad(group, index) {
+    if (index > 0) {
+      return group[index].start - group[index - 1].end
+    } else {
+      return group[index].start
+    }
+  }
+
   return (
     <div>
-      <div>
+      <div className="bar-wrapper">
         {
           data.map((group, index) =>
-            <div className="analysis-container" style={{
-
-            }}>
+            <div className="bar-container">
               {
-                group.map(func =>
-                  <FunctionBar name={func.name}
+                group.map((func, i) =>
+                  <FunctionBar id={func.id}
+                               name={func.name}
                                start={func.start}
                                end={func.end}
-                               next={getWork(index)}/>
+                               pad={getPad(group, i)}
+                               next={getNext(index)}/>
                 )
               }
             </div>
