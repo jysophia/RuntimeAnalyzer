@@ -2,8 +2,8 @@
   <configuration default="false" name="Parsed Code" type="Application" factoryName="Application">
     <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
     <option name="MAIN_CLASS_NAME" value="Main" />
-    <module name="Group16Project2" />
-    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/parsedcode" />
+    <module name="parsedcode" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/parsedcode/src" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>

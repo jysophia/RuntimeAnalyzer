@@ -1,6 +1,6 @@
-import src.TelemetryTools.CallTelemetry;
-import src.TelemetryTools.ReturnTelemetry;
-import src.TelemetryTools.TelemetryLogger;
+import TelemetryTools.CallTelemetry;
+import TelemetryTools.ReturnTelemetry;
+import TelemetryTools.TelemetryLogger;
 
 public class TestProgramClass {
 

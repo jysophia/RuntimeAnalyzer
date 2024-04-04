@@ -38,7 +38,7 @@ public class TelemetryLogger {
     log.put("returns", returnsJson);
 
     try {
-      File logFile = new File("./log/log.json");
+      File logFile = new File("../log/log.json");
       FileWriter logWriter = new FileWriter(logFile);
       logWriter.write(log.toJSONString());
       logWriter.close();
