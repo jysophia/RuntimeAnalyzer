@@ -28,7 +28,37 @@ function convertJSONtoModel(log) {
     r["callTime"] = r["callTime"] - firstStart;
   })
 
-  return returns;
+  returns.sort((a, b) => a.layer - b.layer);
+
+  let model = [];
+  let layer = 0;
+
+  let curr = [];
+  let key = 0;
+
+  returns.forEach(r => {
+    let transformed = {}
+    transformed["key"] = key;
+    key++;
+
+    transformed["name"] = r.methodName;
+    transformed["id"] = r.methodName + key.toString();
+    transformed["start"] = r.callTime / 1000;
+    transformed["end"] = r.returnNanos / 1000;
+
+    if (r.layer === layer) {
+      curr.push(transformed);
+    } else {
+      model.push(curr);
+      curr = [];
+      layer++;
+      curr.push(transformed);
+    }
+  })
+
+  model.push(curr)
+
+  return model;
 }
 
-module.exports = convertJSONtoModel;
+export default convertJSONtoModel;
