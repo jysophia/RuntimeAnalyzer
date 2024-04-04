@@ -6,6 +6,7 @@ import com.github.javaparser.utils.SourceRoot;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 public class AddTelemetry {
@@ -17,8 +18,11 @@ public class AddTelemetry {
         // SourceRoot is a tool that read and writes Java files from packages on a certain root directory.
         // In this case the root directory is found by taking the root from the current Maven module,
         // with src/main/resources appended.
-        Path rootPath = FileSystems.getDefault().getPath("./resources");
+
+        Path rootPath = Paths.get("resources").toAbsolutePath();
         SourceRoot sourceRoot = new SourceRoot(rootPath);
+
+
         MethodDeclarationVisitor mdv = new MethodDeclarationVisitor();
 
         try {
@@ -36,8 +40,10 @@ public class AddTelemetry {
             throw new RuntimeException(e);
         }
 
+
         // This saves all the files we just read to an output directory.
-        Path parsedCodePath = FileSystems.getDefault().getPath("../parsedcode");
+        Path parsedCodePath = Paths.get("../parsedcode").toAbsolutePath();
         sourceRoot.saveAll(parsedCodePath);
+
     }
 }
