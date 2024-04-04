@@ -12,21 +12,16 @@ public class MethodDeclarationVisitor extends ModifierVisitor<Void> {
   @Override
   public MethodDeclaration visit(MethodDeclaration md, Void arg) {
     super.visit(md, arg);
-    String methodName = md.getNameAsString();
-    if (md.isStatic() && methodName.equals("main")) {
-      handleMain(md);
-      return md;
-    }
 
     // visit all blocks in method and find returns to add return logging
     BlockstmtVisitor bsv = new BlockstmtVisitor();
-    bsv.visit(md, null);
+    bsv.visit(md, md);
 
     addCallLogging(md);
 
     // if the visited method is return void type, then also add return logging at end
     if (md.getType().asString().equals("void")) {
-      bsv.addReturnAtIndex(md.getBody().get(), md.getBody().get().getStatements().size());
+      bsv.addReturnAtIndex(md.getBody().get(), md.getBody().get().getStatements().size(), md);
     }
 
     return md;
@@ -36,17 +31,17 @@ public class MethodDeclarationVisitor extends ModifierVisitor<Void> {
     List<Statement> statements = new ArrayList<>();
 
     if (md.isStatic()) {
-      statements.add(StaticJavaParser.parseStatement("int objectId = 0;"));
-      statements.add(StaticJavaParser.parseStatement("String type = \"static\";"));
+      statements.add(StaticJavaParser.parseStatement("int _objectId_ = 0;"));
+      statements.add(StaticJavaParser.parseStatement("String _type_ = \"static\";"));
     } else {
-      statements.add(StaticJavaParser.parseStatement("int objectId = this.hashCode();"));
-      statements.add(StaticJavaParser.parseStatement("String type = this.getClass().getName();"));
+      statements.add(StaticJavaParser.parseStatement("int _objectId_ = this.hashCode();"));
+      statements.add(StaticJavaParser.parseStatement("String _type_ = this.getClass().getName();"));
     }
 
-    statements.add(StaticJavaParser.parseStatement("String methodName = (\"" + md.getNameAsString() + "\");"));
-    statements.add(StaticJavaParser.parseStatement("long callNanos = System.nanoTime();"));
-    statements.add(StaticJavaParser.parseStatement("CallTelemetry callTelemetry = new CallTelemetry(objectId, methodName, type, callNanos);"));
-    statements.add(StaticJavaParser.parseStatement("TelemetryLogger.logCall(callTelemetry);"));
+    statements.add(StaticJavaParser.parseStatement("String _methodName_ = (\"" + md.getNameAsString() + "\");"));
+    statements.add(StaticJavaParser.parseStatement("long _callNanos_ = System.nanoTime();"));
+    statements.add(StaticJavaParser.parseStatement("CallTelemetry _callTelemetry_ = new CallTelemetry(_objectId_, _methodName_, _type_, _callNanos_);"));
+    statements.add(StaticJavaParser.parseStatement("TelemetryLogger.logCall(_callTelemetry_);"));
 
     List<Statement> existingStatements = md.getBody().get().getStatements();
     for (int i = 0; i < statements.size(); i++) {

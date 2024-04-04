@@ -11,51 +11,51 @@ public class TestProgramClass {
     }
 
     public int getVal() {
-        int objectId = this.hashCode();
-        String type = this.getClass().getName();
-        String methodName = ("getVal");
-        long callNanos = System.nanoTime();
-        CallTelemetry callTelemetry = new CallTelemetry(objectId, methodName, type, callNanos);
-        TelemetryLogger.logCall(callTelemetry);
-        long returnNanos = System.nanoTime();
-        long duration = returnNanos - callNanos;
-        ReturnTelemetry returnTelemetry = new ReturnTelemetry(objectId, methodName, type, returnNanos, duration);
-        TelemetryLogger.logReturn(returnTelemetry);
+        int _objectId_ = this.hashCode();
+        String _type_ = this.getClass().getName();
+        String _methodName_ = ("getVal");
+        long _callNanos_ = System.nanoTime();
+        CallTelemetry _callTelemetry_ = new CallTelemetry(_objectId_, _methodName_, _type_, _callNanos_);
+        TelemetryLogger.logCall(_callTelemetry_);
+        long _returnNanos_ = System.nanoTime();
+        long _duration_ = _returnNanos_ - _callNanos_;
+        ReturnTelemetry _returnTelemetry_ = new ReturnTelemetry(_objectId_, _methodName_, _type_, _returnNanos_, _duration_);
+        TelemetryLogger.logReturn(_returnTelemetry_);
         return val;
     }
 
     public void setVal(int val) {
-        int objectId = this.hashCode();
-        String type = this.getClass().getName();
-        String methodName = ("setVal");
-        long callNanos = System.nanoTime();
-        CallTelemetry callTelemetry = new CallTelemetry(objectId, methodName, type, callNanos);
-        TelemetryLogger.logCall(callTelemetry);
+        int _objectId_ = this.hashCode();
+        String _type_ = this.getClass().getName();
+        String _methodName_ = ("setVal");
+        long _callNanos_ = System.nanoTime();
+        CallTelemetry _callTelemetry_ = new CallTelemetry(_objectId_, _methodName_, _type_, _callNanos_);
+        TelemetryLogger.logCall(_callTelemetry_);
         this.val = val;
-        long returnNanos = System.nanoTime();
-        long duration = returnNanos - callNanos;
-        ReturnTelemetry returnTelemetry = new ReturnTelemetry(objectId, methodName, type, returnNanos, duration);
-        TelemetryLogger.logReturn(returnTelemetry);
+        long _returnNanos_ = System.nanoTime();
+        long _duration_ = _returnNanos_ - _callNanos_;
+        ReturnTelemetry _returnTelemetry_ = new ReturnTelemetry(_objectId_, _methodName_, _type_, _returnNanos_, _duration_);
+        TelemetryLogger.logReturn(_returnTelemetry_);
     }
 
     public int returnTest() {
-        int objectId = this.hashCode();
-        String type = this.getClass().getName();
-        String methodName = ("returnTest");
-        long callNanos = System.nanoTime();
-        CallTelemetry callTelemetry = new CallTelemetry(objectId, methodName, type, callNanos);
-        TelemetryLogger.logCall(callTelemetry);
+        int _objectId_ = this.hashCode();
+        String _type_ = this.getClass().getName();
+        String _methodName_ = ("returnTest");
+        long _callNanos_ = System.nanoTime();
+        CallTelemetry _callTelemetry_ = new CallTelemetry(_objectId_, _methodName_, _type_, _callNanos_);
+        TelemetryLogger.logCall(_callTelemetry_);
         if (val > 0) {
-            long returnNanos = System.nanoTime();
-            long duration = returnNanos - callNanos;
-            ReturnTelemetry returnTelemetry = new ReturnTelemetry(objectId, methodName, type, returnNanos, duration);
-            TelemetryLogger.logReturn(returnTelemetry);
+            long _returnNanos_ = System.nanoTime();
+            long _duration_ = _returnNanos_ - _callNanos_;
+            ReturnTelemetry _returnTelemetry_ = new ReturnTelemetry(_objectId_, _methodName_, _type_, _returnNanos_, _duration_);
+            TelemetryLogger.logReturn(_returnTelemetry_);
             return 5;
         } else {
-            long returnNanos = System.nanoTime();
-            long duration = returnNanos - callNanos;
-            ReturnTelemetry returnTelemetry = new ReturnTelemetry(objectId, methodName, type, returnNanos, duration);
-            TelemetryLogger.logReturn(returnTelemetry);
+            long _returnNanos_ = System.nanoTime();
+            long _duration_ = _returnNanos_ - _callNanos_;
+            ReturnTelemetry _returnTelemetry_ = new ReturnTelemetry(_objectId_, _methodName_, _type_, _returnNanos_, _duration_);
+            TelemetryLogger.logReturn(_returnTelemetry_);
             return 10;
         }
     }

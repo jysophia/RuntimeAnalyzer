@@ -6,15 +6,11 @@ import org.json.simple.JSONObject;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class TelemetryLogger {
-  private static List<CallTelemetry> calls = new ArrayList<>();
-  private static List<ReturnTelemetry> returns = new ArrayList<>();
+  private static Queue<CallTelemetry> calls = new LinkedList<>();
+  private static Queue<ReturnTelemetry> returns = new LinkedList<>();
 
   public static void logCall(CallTelemetry ct) {
     calls.add(ct);
@@ -29,13 +25,14 @@ public class TelemetryLogger {
     JSONArray callsJson = new JSONArray();
     JSONArray returnsJson = new JSONArray();
 
-    calls.forEach(ct -> {
-      callsJson.add(ct.toJson());
-    });
 
-    returns.forEach(rt -> {
-      returnsJson.add(rt.toJson());
-    });
+    while (!calls.isEmpty()) {
+      callsJson.add(calls.remove().toJson());
+    }
+
+    while (!returns.isEmpty()) {
+      returnsJson.add(returns.remove().toJson());
+    }
 
     log.put("calls", callsJson);
     log.put("returns", returnsJson);
