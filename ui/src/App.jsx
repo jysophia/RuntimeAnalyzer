@@ -2,74 +2,14 @@ import { useState } from 'react'
 import './App.css'
 import FileInput from "./components/FileInput.jsx";
 import AnalysisContainer from "./components/AnalysisContainer.jsx";
+import convertJSONtoModel from "./CallReturnModel.jsx";
+
+
+const log = {"calls":[{"methodName":"printSomething","type":"static","objectId":0,"callNanos":656481108010},{"methodName":"getVal","type":"TestProgramClass","objectId":1555009629,"callNanos":656481716973},{"methodName":"returnTest","type":"TestProgramClass","objectId":1555009629,"callNanos":656491004942},{"methodName":"setVal","type":"TestProgramClass","objectId":1555009629,"callNanos":656491016948},{"methodName":"returnTest","type":"TestProgramClass","objectId":1555009629,"callNanos":656491020166},{"methodName":"getVal","type":"TestProgramClass","objectId":1555009629,"callNanos":656491023303}],"returns":[{"duration":2614,"methodName":"getVal","type":"TestProgramClass","objectId":1555009629,"returnNanos":656481719587},{"duration":4867,"methodName":"returnTest","type":"TestProgramClass","objectId":1555009629,"returnNanos":656491009809},{"duration":1569,"methodName":"setVal","type":"TestProgramClass","objectId":1555009629,"returnNanos":656491018517},{"duration":1468,"methodName":"returnTest","type":"TestProgramClass","objectId":1555009629,"returnNanos":656491021634},{"duration":1086,"methodName":"getVal","type":"TestProgramClass","objectId":1555009629,"returnNanos":656491024389},{"duration":10409385,"methodName":"printSomething","type":"static","objectId":0,"returnNanos":656491517395}]};
 
 function App() {
     const [showAnalysis, setShowAnalysis] = useState(false)
-    const [data, setData] = useState([
-        [{
-            "key": 0,
-            "id": "main0",
-            "name": "main",
-            "start": 0,
-            "end": 4000
-        }],
-        [{
-            "key": 1,
-            "id": "testFunc1",
-            "name": "testFunc",
-            "start": 100,
-            "end": 3900
-        }],
-        [{
-            "key": 2,
-            "id": "func12",
-            "name": "func1",
-            "start": 400,
-            "end": 1500
-        },
-        {
-            "key": 3,
-            "id": "func23",
-            "name": "func2",
-            "start": 1600,
-            "end": 3000
-        }],
-        [{
-            "key": 4,
-            "id": "func14",
-            "name": "func1",
-            "start": 1000,
-            "end": 1400
-        },
-        {
-            "key": 5,
-            "id": "func25",
-            "name": "func2",
-            "start": 2200,
-            "end": 2900
-        }],
-        [{
-            "key": 6,
-            "id": "func36",
-            "name": "func3",
-            "start": 1100,
-            "end": 1400
-        },
-        {
-            "key": 7,
-            "id": "func37",
-            "name": "func3",
-            "start": 2400,
-            "end": 2900
-        }],
-        [{
-            "key": 8,
-            "id": "func48",
-            "name": "func4",
-            "start": 2450,
-            "end": 2850
-        }]
-    ])
+    const [data, setData] = useState(convertJSONtoModel(log))
 
   return (
     <>
