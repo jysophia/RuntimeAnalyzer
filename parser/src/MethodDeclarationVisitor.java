@@ -31,7 +31,7 @@ public class MethodDeclarationVisitor extends ModifierVisitor<Void> {
 
   private void addCallLogging(MethodDeclaration md) {
     List<Statement> statements = new ArrayList<>();
-    addParameterLogging(md, statements);
+//    addParameterLogging(md, statements);
 
     if (md.isStatic()) {
       statements.add(StaticJavaParser.parseStatement("int _objectId_ = 0;"));
@@ -44,7 +44,7 @@ public class MethodDeclarationVisitor extends ModifierVisitor<Void> {
     statements.add(StaticJavaParser.parseStatement("String _methodName_ = (\"" + md.getNameAsString() + "\");"));
     statements.add(StaticJavaParser.parseStatement("long _callNanos_ = System.nanoTime();"));
     statements.add(StaticJavaParser.parseStatement("CallTelemetry _callTelemetry_ = new CallTelemetry(_objectId_, " +
-            "_methodName_, _type_, _callNanos_, _paramTypes_, _paramNames_, _paramVals_);"));
+            "_methodName_, _type_, _callNanos_);"));
     statements.add(StaticJavaParser.parseStatement("TelemetryLogger.logCall(_callTelemetry_);"));
 
     List<Statement> existingStatements = md.getBody().get().getStatements();

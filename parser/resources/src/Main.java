@@ -9,7 +9,7 @@ public class Main {
     } catch (Exception e) {
     }
 
-    printSomething(tc, 12);
+    printSomething(tc, 9);
 
     try {
       Thread.sleep(800);

@@ -1,7 +1,7 @@
 import 'react'
 import FunctionBar from "./FunctionBar.jsx";
 
-const AnalysisContainer = ({data}) => {
+const AnalysisContainer = ({data, fileName}) => {
 
   const scaleFactor = (data[0][0].end - data[0][0].start) / 1200
 
@@ -29,13 +29,11 @@ const AnalysisContainer = ({data}) => {
             <div className="bar-container">
               {
                 group.map((func, i) =>
-                  <FunctionBar id={func.id}
-                               name={func.name}
-                               start={func.start}
-                               end={func.end}
+                  <FunctionBar func={func}
                                pad={getPad(group, i)}
                                next={getNext(index)}
-                               scaleFactor={scaleFactor}/>
+                               scaleFactor={scaleFactor}
+                               fileName={fileName}/>
                 )
               }
             </div>

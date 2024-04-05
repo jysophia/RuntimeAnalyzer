@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import convertJSONtoModel from "../CallReturnModel.jsx";
 
-function FileInput({setShowAnalysis, setModels}) {
+function FileInput({setShowAnalysis, setModels, fileName}) {
     const [newLines, setNewLines] = useState([]);
     const [files, setFiles] = useState([]);
     let fileReader;
