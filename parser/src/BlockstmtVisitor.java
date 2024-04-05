@@ -41,8 +41,6 @@ public class BlockstmtVisitor extends ModifierVisitor<MethodDeclaration> {
     statements.add(StaticJavaParser.parseStatement("TelemetryLogger.logReturn(_returnTelemetry_);"));
 
     if (md.getNameAsString().equals("main") && md.isStatic()) {
-      Parameter args = md.getParameters().get(0);
-      statements.add(StaticJavaParser.parseStatement("TelemetryLogger.logMainParams(" + args.getNameAsString() + ");"));
       statements.add(StaticJavaParser.parseStatement("TelemetryLogger.dumpLogs();"));
     }
 

@@ -31,7 +31,12 @@ public class MethodDeclarationVisitor extends ModifierVisitor<Void> {
 
   private void addCallLogging(MethodDeclaration md) {
     List<Statement> statements = new ArrayList<>();
-//    addParameterLogging(md, statements);
+
+    if (md.getNameAsString().equals("main") && md.isStatic()) {
+      Parameter args = md.getParameters().get(0);
+      statements.add(StaticJavaParser.parseStatement("TelemetryLogger.logMainParams(" + args.getNameAsString() + ");"));
+    }
+
 
     if (md.isStatic()) {
       statements.add(StaticJavaParser.parseStatement("int _objectId_ = 0;"));
@@ -51,22 +56,5 @@ public class MethodDeclarationVisitor extends ModifierVisitor<Void> {
     for (int i = 0; i < statements.size(); i++) {
       existingStatements.add(i, statements.get(i));
     }
-  }
-
-  private void addParameterLogging(MethodDeclaration md, List<Statement> statements) {
-    statements.add(StaticJavaParser.parseStatement("List<String> _paramTypes_ = new ArrayList<>();"));
-    statements.add(StaticJavaParser.parseStatement("List<String> _paramNames_ = new ArrayList<>();"));
-    statements.add(StaticJavaParser.parseStatement("List<String> _paramVals_ = new ArrayList<>();"));
-
-    NodeList<Parameter> params = md.getParameters();
-    params.forEach(p -> {
-      statements.add(StaticJavaParser.parseStatement("_paramTypes_.add(\"" + p.getType().toString() + "\");"));
-      statements.add(StaticJavaParser.parseStatement("_paramNames_.add(\"" + p.getNameAsString() + "\");"));
-      if (p.getType().isPrimitiveType()) {
-        statements.add(StaticJavaParser.parseStatement("_paramVals_.add(String.valueOf(" + p.getNameAsString() + "));"));
-      } else {
-        statements.add(StaticJavaParser.parseStatement("_paramVals_.add(\"NonPrimitiveType\");"));
-      }
-    });
   }
 }

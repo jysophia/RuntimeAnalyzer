@@ -7,6 +7,7 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
+        TelemetryLogger.logMainParams(args);
         int _objectId_ = 0;
         String _type_ = "static";
         String _methodName_ = ("main");
@@ -34,7 +35,6 @@ public class Main {
         long _duration_ = _returnNanos_ - _callNanos_;
         ReturnTelemetry _returnTelemetry_ = new ReturnTelemetry(_objectId_, _methodName_, _type_, _returnNanos_, _duration_, _paramTypes_, _paramNames_, _paramVals_);
         TelemetryLogger.logReturn(_returnTelemetry_);
-        TelemetryLogger.logMainParams(args);
         TelemetryLogger.dumpLogs();
         //    exponentiallyIncreaseValue(tc, 5);
         //    divideUntilFraction(tc);
