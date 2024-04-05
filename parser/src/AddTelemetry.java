@@ -34,6 +34,7 @@ public class AddTelemetry {
                     cu.addImport("TelemetryTools.CallTelemetry");
                     cu.addImport("TelemetryTools.ReturnTelemetry");
                     cu.addImport("TelemetryTools.TelemetryLogger");
+                    cu.addImport("java.util.*");
                 }
             }
         } catch (IOException e) {

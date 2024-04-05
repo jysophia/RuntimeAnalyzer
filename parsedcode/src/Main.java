@@ -12,7 +12,7 @@ public class Main {
         List<String> _paramVals_ = new ArrayList<>();
         _paramTypes_.add("String[]");
         _paramNames_.add("args");
-        _paramVals_.add("NonPrimativeType");
+        _paramVals_.add("NonPrimitiveType");
         int _objectId_ = 0;
         String _type_ = "static";
         String _methodName_ = ("main");
@@ -37,7 +37,7 @@ public class Main {
         List<String> _paramVals_ = new ArrayList<>();
         _paramTypes_.add("TestProgramClass");
         _paramNames_.add("tpc");
-        _paramVals_.add("NonPrimativeType");
+        _paramVals_.add("NonPrimitiveType");
         _paramTypes_.add("int");
         _paramNames_.add("val");
         _paramVals_.add(String.valueOf(val));
@@ -64,7 +64,7 @@ public class Main {
         List<String> _paramVals_ = new ArrayList<>();
         _paramTypes_.add("TestProgramClass");
         _paramNames_.add("tpc");
-        _paramVals_.add("NonPrimativeType");
+        _paramVals_.add("NonPrimitiveType");
         _paramTypes_.add("int");
         _paramNames_.add("val");
         _paramVals_.add(String.valueOf(val));
@@ -90,7 +90,7 @@ public class Main {
         List<String> _paramVals_ = new ArrayList<>();
         _paramTypes_.add("TestProgramClass");
         _paramNames_.add("tpc");
-        _paramVals_.add("NonPrimativeType");
+        _paramVals_.add("NonPrimitiveType");
         int _objectId_ = 0;
         String _type_ = "static";
         String _methodName_ = ("divideUntilFraction");

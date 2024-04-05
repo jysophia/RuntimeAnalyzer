@@ -1,5 +1,7 @@
 import com.github.javaparser.StaticJavaParser;
+import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.body.MethodDeclaration;
+import com.github.javaparser.ast.body.Parameter;
 import com.github.javaparser.ast.stmt.Statement;
 import com.github.javaparser.ast.visitor.ModifierVisitor;
 
@@ -29,6 +31,7 @@ public class MethodDeclarationVisitor extends ModifierVisitor<Void> {
 
   private void addCallLogging(MethodDeclaration md) {
     List<Statement> statements = new ArrayList<>();
+    addParameterLogging(md, statements);
 
     if (md.isStatic()) {
       statements.add(StaticJavaParser.parseStatement("int _objectId_ = 0;"));
@@ -40,7 +43,8 @@ public class MethodDeclarationVisitor extends ModifierVisitor<Void> {
 
     statements.add(StaticJavaParser.parseStatement("String _methodName_ = (\"" + md.getNameAsString() + "\");"));
     statements.add(StaticJavaParser.parseStatement("long _callNanos_ = System.nanoTime();"));
-    statements.add(StaticJavaParser.parseStatement("CallTelemetry _callTelemetry_ = new CallTelemetry(_objectId_, _methodName_, _type_, _callNanos_);"));
+    statements.add(StaticJavaParser.parseStatement("CallTelemetry _callTelemetry_ = new CallTelemetry(_objectId_, " +
+            "_methodName_, _type_, _callNanos_, _paramTypes_, _paramNames_, _paramVals_);"));
     statements.add(StaticJavaParser.parseStatement("TelemetryLogger.logCall(_callTelemetry_);"));
 
     List<Statement> existingStatements = md.getBody().get().getStatements();
@@ -49,10 +53,20 @@ public class MethodDeclarationVisitor extends ModifierVisitor<Void> {
     }
   }
 
-  private void handleMain(MethodDeclaration md) {
-    // add call at end to dumpLogs
-    Statement dumpLogs = StaticJavaParser.parseStatement("TelemetryLogger.dumpLogs();");
-    List<Statement> existingStatements = md.getBody().get().getStatements();
-    existingStatements.add(existingStatements.size(), dumpLogs);
+  private void addParameterLogging(MethodDeclaration md, List<Statement> statements) {
+    statements.add(StaticJavaParser.parseStatement("List<String> _paramTypes_ = new ArrayList<>();"));
+    statements.add(StaticJavaParser.parseStatement("List<String> _paramNames_ = new ArrayList<>();"));
+    statements.add(StaticJavaParser.parseStatement("List<String> _paramVals_ = new ArrayList<>();"));
+
+    NodeList<Parameter> params = md.getParameters();
+    params.forEach(p -> {
+      statements.add(StaticJavaParser.parseStatement("_paramTypes_.add(\"" + p.getType().toString() + "\");"));
+      statements.add(StaticJavaParser.parseStatement("_paramNames_.add(\"" + p.getNameAsString() + "\");"));
+      if (p.getType().isPrimitiveType()) {
+        statements.add(StaticJavaParser.parseStatement("_paramVals_.add(String.valueOf(" + p.getNameAsString() + "));"));
+      } else {
+        statements.add(StaticJavaParser.parseStatement("_paramVals_.add(\"NonPrimitiveType\");"));
+      }
+    });
   }
 }
