@@ -1,7 +1,6 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 
-function FileInput({setShowAnalysis}) {
-    const [files, setFiles] = useState([]);
+function FileInput({setShowAnalysis, files, setFiles}) {
     const [newLines, setNewLines] = useState([]);
 
     const addAnotherFile = () => {
@@ -11,6 +10,10 @@ function FileInput({setShowAnalysis}) {
     const handleUpload = (event) => {
         setFiles([...files, event.target.files[0]]);
     }
+
+    useEffect(() => {
+        console.log(files[0])
+    }, [files]);
 
     const analyzeCode = (event) => {
         setShowAnalysis(true);

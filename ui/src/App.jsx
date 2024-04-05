@@ -10,12 +10,13 @@ const log = {"calls":[{"methodName":"printSomething","type":"static","objectId":
 function App() {
     const [showAnalysis, setShowAnalysis] = useState(false)
     const [data, setData] = useState(convertJSONtoModel(log))
+    const [files, setFiles] = useState([]);
 
   return (
     <>
         <h1 className="title">Analyzer</h1>
         {!showAnalysis &&
-          <FileInput setShowAnalysis={setShowAnalysis}/>
+          <FileInput setShowAnalysis={setShowAnalysis} files={files} setFiles={setFiles}/>
         }
         <div className="analysis-outer-container">
             {showAnalysis &&
