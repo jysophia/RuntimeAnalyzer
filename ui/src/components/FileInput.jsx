@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react'
+import convertJSONtoModel from "../CallReturnModel.jsx";
 
-function FileInput({setShowAnalysis, files, setFiles}) {
+function FileInput({setShowAnalysis, setModels}) {
     const [newLines, setNewLines] = useState([]);
+    const [files, setFiles] = useState([]);
     let fileReader;
 
     const addAnotherFile = () => {
@@ -14,18 +16,29 @@ function FileInput({setShowAnalysis, files, setFiles}) {
             fileReader = new FileReader();
             fileReader.onloadend = function() {
                 const content = fileReader.result;
-                setFiles([...files, content]);
+                setFiles([...files, [file.name, content]]);
             }
             fileReader.readAsText(file);
         }
     }
 
     useEffect(() => {
-        console.log(files)
+        // if (files.length) {
+        //     console.log(files[0])
+        // }
     }, [files]);
 
     const analyzeCode = (event) => {
         setShowAnalysis(true);
+        let models = [];
+
+        files.forEach(f => {
+            models.push([f[0], convertJSONtoModel(JSON.parse(f[1]))]);
+        });
+
+        console.log(models)
+
+        setModels(models);
     }
 
     return (

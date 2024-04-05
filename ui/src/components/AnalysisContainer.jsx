@@ -3,6 +3,8 @@ import FunctionBar from "./FunctionBar.jsx";
 
 const AnalysisContainer = ({data}) => {
 
+  const scaleFactor = (data[0][0].end - data[0][0].start) / 1200
+
   function getNext(index) {
     if (index < data.length - 1) {
       return data[index + 1]
@@ -32,7 +34,8 @@ const AnalysisContainer = ({data}) => {
                                start={func.start}
                                end={func.end}
                                pad={getPad(group, i)}
-                               next={getNext(index)}/>
+                               next={getNext(index)}
+                               scaleFactor={scaleFactor}/>
                 )
               }
             </div>
