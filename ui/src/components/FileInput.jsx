@@ -1,75 +1,53 @@
 import 'react'
-import {useEffect, useState} from "react";
-import AnalysisContainer from "./AnalysisContainer.jsx";
-import test from "./testLog.json";
-import JSZip from "jszip";
-import * as fs from "fs";
 
-function fetchData() {
-    fetch('../../../parsedcode/log/log.json', {
-        method: 'GET'
-    })
-        .then(response => response.text())
-        .then(data => {
-            let result = JSON.parse(data);
-            console.log(result);
-        })
-        .catch(err => console.log('Error found: ' + err));
-}
+function FileInput({setShowAnalysis}) {
+    let input = ""
+    let argInput = ""
 
-async function addProject(userCode) {
-    console.log(userCode);
-
-}
-
-function getContent(name){
-    return new Promise((resolve, reject) => {
-        try {
-            const zipString = fs.readFileSync("data/" + name).toString("base64");
-            resolve(zipString);
-        } catch (ENOENT) {
-
-        }
-    });
-}
-
-async function handleUpload(event) {
-    const zip = new JSZip();
-    let promises = [];
-    let promiseResult;
-
-    const userCode = getContent(event.target.files[0].name);
-
-    try {
-        let zipEntry = await zip.loadAsync(userCode, {base64: true});
-        for (const entry of Object.keys(entry.files)) {
-            if (!zipEntry.files[entry].dir) {
-                if (zipEntry.file(entry) != null) {
-                    let fileResult = zipEntry.file(entry).async("text");
-                    promises.push(fileResult);
+    const parseArgs = (argInput) => {
+        let args = []
+        let arg = ""
+        for (let i = 0; i < argInput.length; i++) {
+            if (argInput[i] !== " ") {
+                arg += argInput[i];
+                if (i === argInput.length - 1) {
+                    args.push(arg);
+                    arg = "";
                 }
+            } else {
+                args.push(arg);
+                arg = "";
             }
         }
-        promiseResult = await Promise.all(promises);
-    } catch (e) {
-        throw new Error("Couldn't upload zip");
+        return args;
     }
 
-    return promiseResult;
-}
+    const handleArgs = (event) => {
+        argInput = event.target.value;
+    }
 
-const FileInput = ({setShowAnalysis}) => {
+    const handleCode = (event) => {
+        input = event.target.value
+    }
 
-    const analyzeCode = (userCode) => {
+    const handleUpload = (code, args) => {
+        // send to backend?
+        console.log(input);
+        console.log(args);
+    }
+
+    const analyzeCode = () => {
         setShowAnalysis(true);
-        // fetchData();
+        let argArray = parseArgs(argInput);
+        handleUpload(input, argArray);
     }
 
     return (
         <div className="file-upload">
           <div className="text-btn-container">
               <div>
-                  <input type="file" className="file-input w-full max-w-xs" accept=".zip" onChange={handleUpload} />
+                  <input type="text" placeholder="Insert code here" className="input input-bordered input-primary w-full max-w-xs" onChange={handleCode} />
+                  <input type="text" placeholder="Insert arguments here" className="input input-bordered input-primary w-full max-w-xs" onChange={handleArgs} />
               </div>
             <div className="btn-container">
               <button className="btn btn-active btn-primary btn-setting" onClick={analyzeCode}>Analyze</button>
