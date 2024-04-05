@@ -9,8 +9,13 @@ import java.io.IOException;
 import java.util.*;
 
 public class TelemetryLogger {
-  private static Queue<CallTelemetry> calls = new LinkedList<>();
-  private static Queue<ReturnTelemetry> returns = new LinkedList<>();
+  private static final Queue<CallTelemetry> calls = new LinkedList<>();
+  private static final Queue<ReturnTelemetry> returns = new LinkedList<>();
+  private static final List<String> mainParams = new ArrayList<>();
+
+  public static void logMainParams(String[] params) {
+    mainParams.addAll(Arrays.asList(params));
+  }
 
   public static void logCall(CallTelemetry ct) {
     calls.add(ct);
@@ -34,6 +39,7 @@ public class TelemetryLogger {
       returnsJson.add(returns.remove().toJson());
     }
 
+    log.put("mainParams", mainParams);
     log.put("calls", callsJson);
     log.put("returns", returnsJson);
 
