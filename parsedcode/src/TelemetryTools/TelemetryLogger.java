@@ -6,6 +6,7 @@ import org.json.simple.JSONObject;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class TelemetryLogger {
@@ -43,8 +44,10 @@ public class TelemetryLogger {
     log.put("calls", callsJson);
     log.put("returns", returnsJson);
 
+    String timeStamp = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(new java.util.Date());
+
     try {
-      File logFile = new File("../log/log.json");
+      File logFile = new File("../log/" + timeStamp + ".json");
       FileWriter logWriter = new FileWriter(logFile);
       logWriter.write(log.toJSONString());
       logWriter.close();
