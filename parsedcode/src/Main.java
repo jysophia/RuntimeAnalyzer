@@ -25,7 +25,7 @@ public class Main {
             Thread.sleep(800);
         } catch (Exception e) {
         }
-        printSomething(tc, 15);
+        printSomething(tc, 12);
         try {
             Thread.sleep(800);
         } catch (Exception e) {
@@ -65,14 +65,21 @@ public class Main {
             Thread.sleep(400);
         } catch (Exception e) {
         }
-        tpc.setVal(val);
+        if (val > 10) {
+            tpc.setVal(val);
+            try {
+                Thread.sleep(200);
+            } catch (Exception e) {
+            }
+            tpc.returnTest();
+            try {
+                Thread.sleep(400);
+            } catch (Exception e) {
+            }
+            printSomething(tpc, val - 5);
+        }
         try {
             Thread.sleep(200);
-        } catch (Exception e) {
-        }
-        tpc.returnTest();
-        try {
-            Thread.sleep(400);
         } catch (Exception e) {
         }
         System.out.println("The new value of the TestProgramClass is " + tpc.getVal());
