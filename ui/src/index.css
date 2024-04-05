@@ -7,12 +7,18 @@
     margin-bottom: 20px;
 }
 
-.file-input {
+.file-upload {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 500px;
     background-color: #6195ad;
+}
+
+.file-upload-container {
+    display: flex;
+    flex-direction: column;
+
 }
 
 .textarea {
@@ -62,4 +68,12 @@
 
 .analysis-outer-container {
     padding-top: 20px;
+}
+
+.file-input-container {
+    padding-top: 8px;
+}
+
+.btn-add-setting {
+    max-width: 160px;
 }
