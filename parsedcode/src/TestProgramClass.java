@@ -21,6 +21,10 @@ public class TestProgramClass {
         long _callNanos_ = System.nanoTime();
         CallTelemetry _callTelemetry_ = new CallTelemetry(_objectId_, _methodName_, _type_, _callNanos_, _paramTypes_, _paramNames_, _paramVals_);
         TelemetryLogger.logCall(_callTelemetry_);
+        try {
+            Thread.sleep(800);
+        } catch (Exception e) {
+        }
         long _returnNanos_ = System.nanoTime();
         long _duration_ = _returnNanos_ - _callNanos_;
         ReturnTelemetry _returnTelemetry_ = new ReturnTelemetry(_objectId_, _methodName_, _type_, _returnNanos_, _duration_);
@@ -41,6 +45,10 @@ public class TestProgramClass {
         long _callNanos_ = System.nanoTime();
         CallTelemetry _callTelemetry_ = new CallTelemetry(_objectId_, _methodName_, _type_, _callNanos_, _paramTypes_, _paramNames_, _paramVals_);
         TelemetryLogger.logCall(_callTelemetry_);
+        try {
+            Thread.sleep(600);
+        } catch (Exception e) {
+        }
         this.val = val;
         long _returnNanos_ = System.nanoTime();
         long _duration_ = _returnNanos_ - _callNanos_;
@@ -58,6 +66,10 @@ public class TestProgramClass {
         long _callNanos_ = System.nanoTime();
         CallTelemetry _callTelemetry_ = new CallTelemetry(_objectId_, _methodName_, _type_, _callNanos_, _paramTypes_, _paramNames_, _paramVals_);
         TelemetryLogger.logCall(_callTelemetry_);
+        try {
+            Thread.sleep(400);
+        } catch (Exception e) {
+        }
         if (val > 0) {
             long _returnNanos_ = System.nanoTime();
             long _duration_ = _returnNanos_ - _callNanos_;

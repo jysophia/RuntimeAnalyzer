@@ -21,7 +21,7 @@ function FileInput({setShowAnalysis, files, setFiles}) {
     }
 
     useEffect(() => {
-        console.log(files)
+        // console.log(JSON.parse(files[0]))
     }, [files]);
 
     const analyzeCode = (event) => {

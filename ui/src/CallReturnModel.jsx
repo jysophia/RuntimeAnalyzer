@@ -43,8 +43,10 @@ function convertJSONtoModel(log) {
 
     transformed["name"] = r.methodName;
     transformed["id"] = r.methodName + key.toString();
-    transformed["start"] = r.callTime / 1000;
-    transformed["end"] = r.returnNanos / 1000;
+
+    // Convert to ms
+    transformed["start"] = r.callTime / 1000000;
+    transformed["end"] = r.returnNanos / 1000000;
 
     if (r.layer === layer) {
       curr.push(transformed);

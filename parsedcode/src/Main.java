@@ -21,14 +21,22 @@ public class Main {
         TelemetryLogger.logCall(_callTelemetry_);
         TestProgramClass tc = new TestProgramClass(0);
         AnotherTestClass atc = new AnotherTestClass();
+        try {
+            Thread.sleep(800);
+        } catch (Exception e) {
+        }
         printSomething(tc, 15);
-        exponentiallyIncreaseValue(tc, 5);
-        divideUntilFraction(tc);
+        try {
+            Thread.sleep(800);
+        } catch (Exception e) {
+        }
         long _returnNanos_ = System.nanoTime();
         long _duration_ = _returnNanos_ - _callNanos_;
         ReturnTelemetry _returnTelemetry_ = new ReturnTelemetry(_objectId_, _methodName_, _type_, _returnNanos_, _duration_);
         TelemetryLogger.logReturn(_returnTelemetry_);
         TelemetryLogger.dumpLogs();
+        //    exponentiallyIncreaseValue(tc, 5);
+        //    divideUntilFraction(tc);
     }
 
     public static void printSomething(TestProgramClass tpc, int val) {
@@ -48,9 +56,25 @@ public class Main {
         CallTelemetry _callTelemetry_ = new CallTelemetry(_objectId_, _methodName_, _type_, _callNanos_, _paramTypes_, _paramNames_, _paramVals_);
         TelemetryLogger.logCall(_callTelemetry_);
         System.out.println("The old value of the TestProgramClass is " + tpc.getVal());
+        try {
+            Thread.sleep(800);
+        } catch (Exception e) {
+        }
         tpc.returnTest();
+        try {
+            Thread.sleep(400);
+        } catch (Exception e) {
+        }
         tpc.setVal(val);
+        try {
+            Thread.sleep(200);
+        } catch (Exception e) {
+        }
         tpc.returnTest();
+        try {
+            Thread.sleep(400);
+        } catch (Exception e) {
+        }
         System.out.println("The new value of the TestProgramClass is " + tpc.getVal());
         long _returnNanos_ = System.nanoTime();
         long _duration_ = _returnNanos_ - _callNanos_;
