@@ -17,7 +17,8 @@
 
 .file-upload-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+
 }
 
 .textarea {
@@ -67,4 +68,12 @@
 
 .analysis-outer-container {
     padding-top: 20px;
+}
+
+.file-input-container {
+    padding-top: 8px;
+}
+
+.btn-add-setting {
+    max-width: 160px;
 }
