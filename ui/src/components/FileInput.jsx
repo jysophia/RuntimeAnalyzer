@@ -2,17 +2,26 @@ import React, {useEffect, useState} from 'react'
 
 function FileInput({setShowAnalysis, files, setFiles}) {
     const [newLines, setNewLines] = useState([]);
+    let fileReader;
 
     const addAnotherFile = () => {
         setNewLines([...newLines, newLines.length]);
     }
 
     const handleUpload = (event) => {
-        setFiles([...files, event.target.files[0]]);
+        let file = event.target.files[0];
+        if (file) {
+            fileReader = new FileReader();
+            fileReader.onloadend = function() {
+                const content = fileReader.result;
+                setFiles([...files, content]);
+            }
+            fileReader.readAsText(file);
+        }
     }
 
     useEffect(() => {
-        console.log(files[0])
+        console.log(files)
     }, [files]);
 
     const analyzeCode = (event) => {
