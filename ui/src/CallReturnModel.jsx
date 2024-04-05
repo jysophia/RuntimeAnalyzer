@@ -13,11 +13,14 @@ function convertJSONtoModel(log) {
   let openIntervals = []
 
   returns.forEach(r => {
+    let temp = []
     openIntervals.forEach((o, index, object) => {
-      if (r.callTime >= o) {
-        object.splice(index, 1);
+      if (r.callTime < o) {
+        temp.push(o);
       }
     })
+
+    openIntervals = temp;
 
     r["layer"] = openIntervals.length;
     openIntervals.push(r.returnNanos)
