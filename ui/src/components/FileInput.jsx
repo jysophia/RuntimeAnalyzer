@@ -33,7 +33,8 @@ function FileInput({setShowAnalysis, setModels, fileName}) {
         let models = [];
 
         files.forEach(f => {
-            models.push([f[0], convertJSONtoModel(JSON.parse(f[1]))]);
+            const model = convertJSONtoModel(JSON.parse(f[1]));
+            models.push([f[0], model[0], model[1]]);
         });
 
         console.log(models)

@@ -2,6 +2,8 @@
 function convertJSONtoModel(log) {
   const returns = log.returns;
 
+  const mainParams = log.mainParams;
+
   returns.map(r => {
     r["callTime"] = r.returnNanos - r.duration;
   })
@@ -67,7 +69,7 @@ function convertJSONtoModel(log) {
 
   model.push(curr)
 
-  return model;
+  return [model, mainParams];
 }
 
 export default convertJSONtoModel;

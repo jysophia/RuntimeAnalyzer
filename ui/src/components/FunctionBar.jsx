@@ -1,7 +1,7 @@
 import 'react'
 import {useEffect, useState} from "react";
 
-const FunctionBar = ({func, pad, next, scaleFactor, fileName}) => {
+const FunctionBar = ({func, pad, next, scaleFactor, fileName, mainParams}) => {
 
   const time = roundTo2(func.end - func.start);
   const [subCalls, setSubCalls] = useState(next.filter((n) => n.start >= func.start && n.end <= func.end));

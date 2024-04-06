@@ -9,14 +9,14 @@ public class Main {
     } catch (Exception e) {
     }
 
-    printSomething(tc, 9);
+    printSomething(tc, Integer.parseInt(args[0]));
 
     try {
       Thread.sleep(800);
     } catch (Exception e) {
     }
 
-//    exponentiallyIncreaseValue(tc, 5);
+    exponentiallyIncreaseValue(tc, Integer.parseInt(args[1]));
 //    divideUntilFraction(tc);
   }
 
@@ -62,6 +62,10 @@ public class Main {
   }
 
   public static void exponentiallyIncreaseValue(TestProgramClass tpc, int val) {
+    try {
+      Thread.sleep(200);
+    } catch (Exception e) {
+    }
     for (int i = 0; i < val; i++) {
       tpc.val = tpc.val * tpc.val;
     }
@@ -70,6 +74,10 @@ public class Main {
 
   public static void divideUntilFraction(TestProgramClass tpc) {
     tpc.val = tpc.val / 2;
+    try {
+      Thread.sleep(200);
+    } catch (Exception e) {
+    }
 
     while (tpc.val > 0) {
       divideUntilFraction(tpc);

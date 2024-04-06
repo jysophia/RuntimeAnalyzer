@@ -23,7 +23,7 @@ function App() {
                     <div className="log-title">{m[0]}</div>
                     <div className="analysis-outer-container">
                       <div className="analysis-wrapper">
-                        <AnalysisContainer data={m[1]} fileName={m[0]}/>
+                        <AnalysisContainer fileName={m[0]} data={m[1]} mainParams={m[2]}/>
                       </div>
                     </div>
                   </>

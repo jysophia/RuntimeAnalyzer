@@ -20,11 +20,12 @@ public class Main {
             Thread.sleep(800);
         } catch (Exception e) {
         }
-        printSomething(tc, 9);
+        printSomething(tc, Integer.parseInt(args[0]));
         try {
             Thread.sleep(800);
         } catch (Exception e) {
         }
+        exponentiallyIncreaseValue(tc, Integer.parseInt(args[1]));
         List<String> _paramTypes_ = new ArrayList<>();
         List<String> _paramNames_ = new ArrayList<>();
         List<String> _paramVals_ = new ArrayList<>();
@@ -36,7 +37,6 @@ public class Main {
         ReturnTelemetry _returnTelemetry_ = new ReturnTelemetry(_objectId_, _methodName_, _type_, _returnNanos_, _duration_, _paramTypes_, _paramNames_, _paramVals_);
         TelemetryLogger.logReturn(_returnTelemetry_);
         TelemetryLogger.dumpLogs();
-        //    exponentiallyIncreaseValue(tc, 5);
         //    divideUntilFraction(tc);
     }
 
@@ -97,6 +97,10 @@ public class Main {
         long _callNanos_ = System.nanoTime();
         CallTelemetry _callTelemetry_ = new CallTelemetry(_objectId_, _methodName_, _type_, _callNanos_);
         TelemetryLogger.logCall(_callTelemetry_);
+        try {
+            Thread.sleep(200);
+        } catch (Exception e) {
+        }
         for (int i = 0; i < val; i++) {
             tpc.val = tpc.val * tpc.val;
         }
@@ -124,6 +128,10 @@ public class Main {
         CallTelemetry _callTelemetry_ = new CallTelemetry(_objectId_, _methodName_, _type_, _callNanos_);
         TelemetryLogger.logCall(_callTelemetry_);
         tpc.val = tpc.val / 2;
+        try {
+            Thread.sleep(200);
+        } catch (Exception e) {
+        }
         while (tpc.val > 0) {
             divideUntilFraction(tpc);
         }

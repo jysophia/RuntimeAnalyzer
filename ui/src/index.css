@@ -84,5 +84,12 @@
     border-radius: 10px;
     font-size: 30px;
     background-color: #dcdcdc;
+}
 
+.main-params {
+    margin-top: 8px;
+    border: solid black;
+    border-radius: 10px;
+    font-size: 30px;
+    background-color: #b5a8bb;
 }
